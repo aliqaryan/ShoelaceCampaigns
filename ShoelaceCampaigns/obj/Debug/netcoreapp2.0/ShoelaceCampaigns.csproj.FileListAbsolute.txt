@@ -1,0 +1,11 @@
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\bin\Debug\netcoreapp2.0\ShoelaceCampaigns.deps.json
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\bin\Debug\netcoreapp2.0\ShoelaceCampaigns.runtimeconfig.json
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\bin\Debug\netcoreapp2.0\ShoelaceCampaigns.runtimeconfig.dev.json
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\bin\Debug\netcoreapp2.0\ShoelaceCampaigns.dll
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\bin\Debug\netcoreapp2.0\ShoelaceCampaigns.pdb
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.csproj.CoreCompileInputs.cache
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.AssemblyInfoInputs.cache
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.AssemblyInfo.cs
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.dll
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.pdb
+E:\Projects\ShoelaceCampaigns\ShoelaceCampaigns\obj\Debug\netcoreapp2.0\ShoelaceCampaigns.csprojResolveAssemblyReference.cache

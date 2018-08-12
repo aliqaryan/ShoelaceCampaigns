@@ -1,0 +1,137 @@
+﻿@model HomeViewModel
+
+
+
+<div class="row">
+    <div class="col-md-7">
+        <h2>Create Campaign</h2>
+
+
+        <div class="row">
+            <label for="name" class="control-label">Template</label>
+            <select class="form-control" id="selectTemplate">
+                @foreach (var item in Model.TemplateOptions)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+        </div>
+        <br />
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <label for="name" class="control-label">Fill Ads by custom values:</label>
+                    <select class="form-control" id="selectProduct">
+                        @foreach (var prod in Model.Products)
+                        {
+                            <option value='{"name":"@prod.Name","desc":"@prod.Description"}'>@Html.Raw(prod.Name + " - " + prod.Description)</option>
+                        }
+                    </select>
+                </div>
+                <br />
+                <div class="row">
+                    <label for="name" class="control-label">Ad Title</label>
+                    <input type="text" id="adtitle" class="form-control">
+                </div>
+                <br />
+
+                <div class="row">
+                    <label for="name" class="control-label">Ad Copy</label>
+                    <input type="text" id="adcopy" class="form-control">
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <label for="name" class="control-label">Image</label>
+            <textarea class="form-control" id="adimage" rows="3"></textarea>
+        </div>
+        <br />
+        <div class="row">
+            <label for="name" class="control-label">Campaign Objective</label>
+            <input type="text" id="campaign_objective" class="form-control">
+        </div>
+        <br />
+        <div class="row">
+            <label for="name" class="control-label">Status</label>
+            <select class="form-control" id="status">
+                @foreach (var item in Model.StatusOptions)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+        </div>
+        <br />
+        <div class="row">
+            <label for="name" class="control-label">Ad Network ID</label>
+            <input type="text" id="adnetworkid" class="form-control">
+        </div>
+        <br />
+        <div class="row">
+            <button type="button" id="save" class="btn btn-primary">Save & Publish</button>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            loadCampaign($('#selectTemplate').val());
+            $('#selectTemplate').on('change', function () {
+                loadCampaign(this.value);
+            });
+
+            $('#selectProduct').on('change', function () {
+                loadProduct(this.value);
+            });
+
+            $("#save").click(function () {
+                saveCampaign();
+                //alert("Saved!");
+            });
+        });
+
+        function loadCampaign(template) {
+            $.getJSON("Home/GetTemplateInfo", { template: template })
+                .done(function (data) {
+                    $("#adtitle").val(data.title);
+                    $("#adcopy").val(data.adCopy);
+                    $("#campaign_objective").val(data.campaignObjective);
+                })
+                .fail(function (jqxhr, textStatus, error) {
+                    var err = textStatus + ", " + error;
+                    console.log("Request Failed: " + err);
+                });
+        }
+
+
+        function loadProduct(product) {
+            var data = JSON.parse(product);
+            $("#adtitle").val(data.name);
+            $("#adcopy").val(data.desc);
+        }
+
+
+        function saveCampaign() {
+            var campaignVm = {
+                "templateName": $('#selectTemplate').val(),
+                "title": $("#adtitle").val(),
+                "adCopy": $("#adcopy").val(),
+                "campaignObjective": $("#campaign_objective").val(),
+                "image": $("#adimage").val(),
+                "status": $("#status").val(),
+                "adNetworkId": $("#adnetworkid").val(),
+            }
+            $.ajax({
+                type: "post",
+                url: "Home/SaveCampaign",
+                dataType: "json",
+                data: campaignVm,
+                success: function (response) {
+                    alert("Campaign created and published!");
+                }
+            })
+        }
+
+
+    </script>
+</div>
